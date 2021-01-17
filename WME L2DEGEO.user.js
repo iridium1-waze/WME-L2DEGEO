@@ -15,7 +15,7 @@
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
 
 var L2DEGEO = "2021.01.17.01";
-//changes by Iridium1 (contact either PM or iridium1.waze@gmail.com)
+//by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 //01: Initial release
 
 if ('undefined' == typeof __RTLM_PAGE_SCOPE_RUN__) {
@@ -41,8 +41,6 @@ if ('undefined' == typeof __RTLM_PAGE_SCOPE_RUN__) {
         }, 3000);
   })();
 
-  // Stop running, because we know Greasemonkey actually runs us in
-  // an anonymous wrapper.
   return;
 }
 
@@ -63,7 +61,6 @@ double[] GoogleBingtoWGS84Mercator (double x, double y) {
 }
 */
 
-
 function getQueryString (link, name)
 {
     var pos = link.indexOf(name + '=' ) + name.length + 1;
@@ -81,16 +78,15 @@ function CorrectZoom (link)
 function add_buttons()
 {
 
-var baw-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/baden-wuertemberg.png;background-repeat: no-repeat;border-radius: 7px">Baden-Würtemberg</button>');
-baw-btn.click(function(){
-    
+var bawbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/baden-wuertemberg.png;background-repeat: no-repeat;border-radius: 7px">Baden-Würtemberg</button>');
+bawbtn.click(function(){
 
-    var mapsUrl = 'https://www.geoportal-bw.de/' ;
+    var mapsUrl = 'https://www.geoportal-bw.de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var bay-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: CornflowerBlue;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/bayern.png);background-repeat: no-repeat;border-radius: 7px">&nbsp;&nbsp;Bayern</button>');
-bay-btn.click(function(){
+var baybtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: CornflowerBlue;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/bayern.png);background-repeat: no-repeat;border-radius: 7px">&nbsp;&nbsp;Bayern</button>');
+baybtn.click(function(){
     var href = $('.WazeControlPermalink a').attr('href');
 
     var lon = parseFloat(getQueryString(href, 'lon'));
@@ -116,106 +112,106 @@ bay-btn.click(function(){
    }
 });
 
-var ber-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/berlin.png);background-repeat: no-repeat;border-radius: 7px">Berlin</button>');
-ber-btn.click(function(){
-   
-    var mapsUrl = ' https://fbinter.stadt-berlin.de/fb/index.jsp! ;
+var berbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/berlin.png);background-repeat: no-repeat;border-radius: 7px">Berlin</button>');
+berbtn.click(function(){
+
+    var mapsUrl = 'https://fbinter.stadt-berlin.de/fb/index.jsp!' ;
     window.open(mapsUrl,'_blank');
 });
 
-var bra-btn = = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/brandenburg.png);background-repeat: no-repeat;border-radius: 7px">Brandenburg</button>');
-bra-btn.click(function(){
-    
+var brabtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/brandenburg.png);background-repeat: no-repeat;border-radius: 7px">Brandenburg</button>');
+brabtn.click(function(){
+
     var mapsUrl = 'https://geoportal.brandenburg.de/geodaten/suche-nach-geodaten' ;
     window.open(mapsUrl,'_blank');
 });
 
-var bre-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/bremen.png);background-repeat: no-repeat;border-radius: 7px">Bremen</button>');
-bre-btn.click(function(){
-  
+var brebtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/bremen.png);background-repeat: no-repeat;border-radius: 7px">Bremen</button>');
+brebtn.click(function(){
+
     var mapsUrl = 'https://geobasis.bremen.de/ASWeb/ASC_URM/portallogin.jsp' ;oom;
     window.open(mapsUrl,'_blank');
 });
 
-var ham-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/hamburg.png);background-repeat: no-repeat;border-radius: 7px">Hamburg</button>');
-ham-btn.click(function(){
-    
+var hambtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/hamburg.png);background-repeat: no-repeat;border-radius: 7px">Hamburg</button>');
+hambtn.click(function(){
+
     var mapsUrl = 'https://geoportal-hamburg.de/geo-online' ;
     window.open(mapsUrl,'_blank');
 });
 
-var hes-btn = $$('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/hessen.png);background-repeat: no-repeat;border-radius: 7px">Hessen</button>');
-hes-btn.click(function(){
-   
+var hesbtn = $$('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/hessen.png);background-repeat: no-repeat;border-radius: 7px">Hessen</button>');
+hesbtn.click(function(){
+
     var mapsUrl = 'http://www.geoportal.hessen.de/portal/karten.html' ;
     window.open(mapsUrl,'_blank');
 });
 
-var mev-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/mecklenburg-vorpommern.png);background-repeat: no-repeat;border-radius: 7px">Mecklenburg-Vorpommern</button>');
-mev-btn.click(function(){
-   
+var mevbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/mecklenburg-vorpommern.png);background-repeat: no-repeat;border-radius: 7px">Mecklenburg-Vorpommern</button>');
+mev_btn.click(function(){
+
     var mapsUrl = 'https://www.geoportal-mv.de/portal/Geodatenviewer/GAIA-MVlight' ;
     window.open(mapsUrl,'_blank');
 });
 
-var nie-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/niedersachsen.png);background-repeat: no-repeat;border-radius: 7px">Niedersachsen</button>');
-nie-btn.click(function(){
-    
+var niebtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/niedersachsen.png);background-repeat: no-repeat;border-radius: 7px">Niedersachsen</button>');
+niebtn.click(function(){
+
     var mapsUrl = 'https://www.geobasis.niedersachsen.de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var nrw-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/nordrhein-westfalen.png);background-repeat: no-repeat;border-radius: 7px">Nordrhein-Westfalen</button>');
-nrw-btn.click(function(){
-    
+var nrwbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/nordrhein-westfalen.png);background-repeat: no-repeat;border-radius: 7px">Nordrhein-Westfalen</button>');
+nrwbtn.click(function(){
+
     var mapsUrl = 'https://www.geoportal.nrw' ;
     window.open(mapsUrl,'_blank');
 });
 
-var rhe-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/rheinland-pfalz.png);background-repeat: no-repeat;border-radius: 7px">Rheinland-Pfalz</button>');
-rhe-btn.click(function(){
-   
+var rhebtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/rheinland-pfalz.png);background-repeat: no-repeat;border-radius: 7px">Rheinland-Pfalz</button>');
+rhebtn.click(function(){
+
     var mapsUrl = 'https://www.geoportal.rlp.de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var saa-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/saarland.png);background-repeat: no-repeat;border-radius: 7px">Saarland</button>');
-saa-btn.click(function(){
-    
+var saabtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/saarland.png);background-repeat: no-repeat;border-radius: 7px">Saarland</button>');
+saa_btn.click(function(){
+
     var mapsUrl = 'https://geoportal.saarland.de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var sac-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/sachsen.png);background-repeat: no-repeat;border-radius: 7px">Sachsen</button>');
-sac-btn.click(function(){
-    
+var sacbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/sachsen.png);background-repeat: no-repeat;border-radius: 7px">Sachsen</button>');
+sacbtn.click(function(){
+
     var mapsUrl = 'https://geoportal.sachsen.de/cps/karte.html?showmap=true'
     window.open(mapsUrl,'_blank');
 });
 
-var san-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/sachsen-anhalt.png);background-repeat: no-repeat;border-radius: 7px">Sachsen-Anhalt</button>');
-san-btn.click(function(){
-    
+var sanbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/sachsen-anhalt.png);background-repeat: no-repeat;border-radius: 7px">Sachsen-Anhalt</button>');
+sanbtn.click(function(){
+
     var mapsUrl = 'https://www.lvermgeo.sachsen-anhalt.de/de/startseite_viewer.html' ;
     window.open(mapsUrl,'_blank');
 });
 
-var sho-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/schleswig-holstein.png);background-repeat: no-repeat;border-radius: 7px">Schleswig-Holstein</button>');
-sho-btn.click(function(){
-   
+var sho_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/schleswig-holstein.png);background-repeat: no-repeat;border-radius: 7px">Schleswig-Holstein</button>');
+sho_btn.click(function(){
+
     var mapsUrl = 'https://danord.gdi-sh.de/viewer/resources/apps/Anonym/index.html?lang=de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var thu-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/thueringen.png);background-repeat: no-repeat;border-radius: 7px">Thüringen</button>');
-thu-btn.click(function(){
-    
+var thu_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/thueringen.png);background-repeat: no-repeat;border-radius: 7px">Thüringen</button>');
+thu_btn.click(function(){
+
     var mapsUrl = 'https://www.geoportal-th.de/de-de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var deu-btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/deutschland.png);background-repeat: no-repeat;border-radius: 7px">DE Webatlas</button>');
-deu-btn.click(function(){
+var deu_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/master/deutschland.png);background-repeat: no-repeat;border-radius: 7px">DE Webatlas</button>');
+deu_btn.click(function(){
    var href = $('.WazeControlPermalink a').attr('href');
 
     var lon = parseFloat(getQueryString(href, 'lon'));
@@ -276,43 +272,43 @@ tabContent.appendChild(addon);
 
 $("#sidepanel-l2degeo").append(txtbtn1);          // ■■■■■ "GEOPORTALE DER BUNDESLÄNDER" ■■■■■
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append(baw-btn);            //Baden-Würtemberg
+$("#sidepanel-l2degeo").append(baw_btn);            //Baden-Würtemberg
 $("#sidepanel-l2degeo").append('&nbsp;&nbsp;');
-$("#sidepanel-l2degeo").append(baw-btn);            //Bayern
+$("#sidepanel-l2degeo").append(baw_btn);            //Bayern
 $("#sidepanel-l2degeo").append('&nbsp;&nbsp;');
-$("#sidepanel-l2degeo").append(ber-btn);            //Berlin
+$("#sidepanel-l2degeo").append(ber_btn);            //Berlin
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(bra-btn);            //Brandenburg
+$("#sidepanel-l2degeo").append(bra_btn);            //Brandenburg
 $("#sidepanel-l2degeo").append('&nbsp;&nbsp;');
-$("#sidepanel-l2degeo").append(bre-btn);            //Bremen
+$("#sidepanel-l2degeo").append(bre_btn);            //Bremen
 $("#sidepanel-l2degeo").append('&nbsp;&nbsp;');
-$("#sidepanel-l2degeo").append(ham-btn);            //Hamburg
+$("#sidepanel-l2degeo").append(ham_btn);            //Hamburg
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(hes-btn);			//Hessen
+$("#sidepanel-l2degeo").append(hes_btn);			//Hessen
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(mev-btn);            //Mecklenburg-Vorpommern
+$("#sidepanel-l2degeo").append(mev_btn);            //Mecklenburg-Vorpommern
 $("#sidepanel-l2degeo").append('&nbsp;&nbsp;');
-$("#sidepanel-l2degeo").append(nie-btn);			//Niedersachsen
+$("#sidepanel-l2degeo").append(nie_btn);			//Niedersachsen
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(nrw-btn);			//Nordrhein-Westfalen
+$("#sidepanel-l2degeo").append(nrw_btn);			//Nordrhein-Westfalen
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(rhe-btn);            //Rheinland-Pfalz
+$("#sidepanel-l2degeo").append(rhe_btn);            //Rheinland-Pfalz
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(saa-btn);            //Saarland
+$("#sidepanel-l2degeo").append(saa_btn);            //Saarland
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(sac-btn);            //Sachsen
+$("#sidepanel-l2degeo").append(sac_btn);            //Sachsen
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(san-btn);            //Sachsen-Anhalt
+$("#sidepanel-l2degeo").append(san_btn);            //Sachsen-Anhalt
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(sho-btn);            //Schleswig-Holstein
+$("#sidepanel-l2degeo").append(sho_btn);            //Schleswig-Holstein
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append(thu-btn);            //Thüringen
+$("#sidepanel-l2degeo").append(thu_btn);            //Thüringen
 
 
 $("#sidepanel-l2degeo").append('<br><br>');       //  ■■■■■ "GEOPORTAL DE" ■■■■■
 $("#sidepanel-l2degeo").append(txtbtn2);
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append(deu-btn);            //Webatlas
+$("#sidepanel-l2degeo").append(deu_btn);            //Webatlas
 
 
 //$("#sidepanel-l2degeo").append(btn3b);
