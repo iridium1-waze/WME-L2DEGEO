@@ -245,12 +245,12 @@ var txt_btn4 = $('<button style="width: 285px;height: 24px; border: 1px solid si
 var txt_btn5 = $('<button style="width: 285px;height: 24px; border: 1px solid silver; font-size:80%; font-weight: bold; color: LightSeaGreen; background-color: ghostwhite; border-radius: 7px;">WAZE INTERN</button>');
 var spacer = '<p style="margin-bottom:10px">'
 
-// add new box to left of the map
-var addon = document.createElement("section");
-addon.id = "l2degeo-addon";
+// create the content of the side-panel tab
+var addon = document.createElement('section');
+var section = document.createElement('p');
+addon.id = "sidepanel-l2degeo";
 
-addon.innerHTML =
-    '<a href="https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js" target="_blank">Link to DE Geo Portals / V' + l2degeo_version + '</a><p>';
+section.innerHTML += '<a href="https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js" target="_blank">' + 'Link to DE Geo Portals / V' + l2degeo_version + '</a><p>';
 
 //alert("Create Tab");
 var userTabs = document.getElementById('user-info');
@@ -261,12 +261,9 @@ newtab = document.createElement('li');
 newtab.innerHTML = '<a href="#sidepanel-l2degeo" data-toggle="tab">L2DEGEO</a>';
 navTabs.appendChild(newtab);
 
-addon.id = "sidepanel-l2degeo";
+addon.appendChild(section);
 addon.className = "tab-pane";
-tabContent.appendChild(addon);
-
-
-//$("#sidepanel-L2DEGEO").append(btn0);
+return addon;
 
 
 $("#sidepanel-l2degeo").append(txt_btn1);          // ■■■■■ "GEOPORTALE DER BUNDESLÄNDER" ■■■■■
@@ -303,10 +300,13 @@ $("#sidepanel-l2degeo").append(sho_btn);            //Schleswig-Holstein
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append(thu_btn);            //Thüringen
 
-
 $("#sidepanel-l2degeo").append('<br><br>');       //  ■■■■■ "GEOPORTAL DE" ■■■■■
 $("#sidepanel-l2degeo").append(txt_btn2);
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(deu_btn);            //Webatlas
 
+
+addon.appendChild(section);
+addon.className = "tab-pane";
+return addon;
 }
