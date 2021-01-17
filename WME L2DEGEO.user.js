@@ -139,7 +139,7 @@ ham_btn.click(function(){
     window.open(mapsUrl,'_blank');
 });
 
-var hes_btn = $$('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/hessen.png);background-repeat: no-repeat;border-radius: 7px">Hessen</button>');
+var hes_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/hessen.png);background-repeat: no-repeat;border-radius: 7px">Hessen</button>');
 hes_btn.click(function(){
 
     var mapsUrl = 'http://www.geoportal.hessen.de/portal/karten.html' ;
