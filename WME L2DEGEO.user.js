@@ -14,8 +14,8 @@
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
 
 var l2degeo_version = "2021.01.17.01";
-//by Iridium1 (contact either PM or iridium1.waze@gmail.com)
-//01: Initial release
+// by Iridium1 (contact either PM or iridium1.waze@gmail.com)
+// 2021.01.17.01: Initial release
 
 if ('undefined' == typeof __RTLM_PAGE_SCOPE_RUN__) {
   (function page_scope_runner()
@@ -77,15 +77,15 @@ function CorrectZoom (link)
 function add_buttons()
 {
 
-var bawbtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/baden-wuertemberg.png;background-repeat: no-repeat;border-radius: 7px">Baden-Würtemberg</button>');
-bawbtn.click(function(){
+var baw_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/baden-wuertemberg.png;background-repeat: no-repeat;border-radius: 7px">Baden-Würtemberg</button>');
+baw_btn.click(function(){
 
     var mapsUrl = 'https://www.geoportal-bw.de' ;
     window.open(mapsUrl,'_blank');
 });
 
-var baybtn = $('<button style="width: 90px;height: 24px;font-size:90%;color: CornflowerBlue;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/bayern.png);background-repeat: no-repeat;border-radius: 7px">&nbsp;&nbsp;Bayern</button>');
-baybtn.click(function(){
+var bay_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: CornflowerBlue;background-image: url(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/bayern.png);background-repeat: no-repeat;border-radius: 7px">&nbsp;&nbsp;Bayern</button>');
+bay_btn.click(function(){
     var href = $('.WazeControlPermalink a').attr('href');
 
     var lon = parseFloat(getQueryString(href, 'lon'));
@@ -168,7 +168,7 @@ nrw_btn.click(function(){
 });
 
 var rhe_btn = $('<button style="width: 90px;height: 24px;font-size:90%;color: DarkSlateGrey;background-image: urlurl(https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/blob/main/rheinland-pfalz.png);background-repeat: no-repeat;border-radius: 7px">Rheinland-Pfalz</button>');
-rhebtn.click(function(){
+rhe_btn.click(function(){
 
     var mapsUrl = 'https://www.geoportal.rlp.de' ;
     window.open(mapsUrl,'_blank');
@@ -250,7 +250,7 @@ var addon = document.createElement('section');
 var section = document.createElement('p');
 addon.id = "sidepanel-l2degeo";
 
-section.innerHTML += '<a href="https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js" target="_blank">' + 'Link to DE Geo Portals / V' + l2degeo_version + '</a><p>';
+section.innerHTML += '<a href="https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js" target="_blank">Links to DE Geo Portals / V' + l2degeo_version + '</a><p>';
 
 //alert("Create Tab");
 var userTabs = document.getElementById('user-info');
@@ -305,8 +305,4 @@ $("#sidepanel-l2degeo").append(txt_btn2);
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(deu_btn);            //Webatlas
 
-
-addon.appendChild(section);
-addon.className = "tab-pane";
-return addon;
 }
