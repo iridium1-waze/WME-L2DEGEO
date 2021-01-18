@@ -146,7 +146,7 @@ hes_btn.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var mev_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Meclenburg-Vorpommern</button>');
+var mev_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Mecklenburg-Vorpommern</button>');
 mev_btn.click(function(){
 
   var mapsUrl = 'https://www.geoportal-mv.de/portal/Geodatenviewer/GAIA-MVlight' ;
@@ -155,12 +155,19 @@ mev_btn.click(function(){
 
 var nie_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Niedersachsen</button>');
 nie_btn.click(function(){
+    var href = $('.WazeControlPermalink a').attr('href');
 
-  var mapsUrl = 'https://www.geobasis.niedersachsen.de' ;
-  window.open(mapsUrl,'_blank');
+    var lon = getQueryString(href, 'lon');
+    var lat = getQueryString(href, 'lat');
+    var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
+
+    zoom = zoom > 19 ? 19 : zoom;
+    var mapsUrl = 'https://www.geobasis.niedersachsen.de/?x=' + lon + '&y=' + lat + '&z=' + (zoom-1);
+    window.open(mapsUrl,'_blank');
+
 });
 
-var nrw_btn1 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Nordrhen-Westfalen</button>');
+var nrw_btn1 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Nordrhein-Westfalen</button>');
 nrw_btn1.click(function(){
 
   var mapsUrl = 'https://www.geoportal.nrw' ;
@@ -185,7 +192,7 @@ rhe_btn.click(function(){
 var saa_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Saarland</button>');
 saa_btn.click(function(){
 
-  var mapsUrl = 'https://geoportal.saarland.de' ;
+  var mapsUrl = 'https://geoportal.saarland.de/map?WMC=4331' ;
   window.open(mapsUrl,'_blank');
 });
 
@@ -213,7 +220,7 @@ sho_btn.click(function(){
 var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
 thu_btn.click(function(){
 
-  var mapsUrl = 'https://www.geoportal-th.de/de-de' ;
+  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer' ;
   window.open(mapsUrl,'_blank');
 });
 
