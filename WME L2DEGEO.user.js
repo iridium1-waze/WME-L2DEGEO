@@ -153,7 +153,7 @@ mev_btn.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var nie_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Niedersachsen</button>');
+var nie_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Niedersachsen</button>');
 nie_btn.click(function(){
     var href = $('.WazeControlPermalink a').attr('href');
 
