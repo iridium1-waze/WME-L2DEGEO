@@ -236,12 +236,32 @@ sho_btn.click(function(){
   var mapsUrl = 'https://danord.gdi-sh.de/viewer/resources/apps/Anonym/index.html?lang=de' ;
   window.open(mapsUrl,'_blank');
 });
-
+//Syntax: https://thueringenviewer.thueringen.de/thviewer/?layerIDs=1002,2501&visibility=true,true&transparency=0,0&center=645271.0357146686,5641289.55278756&zoomlevel=11&category=Offene%20Geodaten
 var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
 thu_btn.click(function(){
+  var href = $('.WazeControlPermalink a').attr('href');
 
-  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer' ;
+  var lon = parseFloat(getQueryString(href, 'lon'));
+  var lat = parseFloat(getQueryString(href, 'lat'));
+  var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
+
+  zoom = zoom-12;
+
+  // Using Proj4js to transform coordinates. See http://proj4js.org/
+  var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
+  script.type = 'text/javascript';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js';
+  document.getElementsByTagName('head')[0].appendChild(script); // Add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+  script.onload = popAtlas; //wait till the script is downloaded & executed
+  function popAtlas() {
+  //just a wrapper for onload
+   if (proj4) {
+    firstProj= "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
+    var utm = proj4(firstProj,[lon,lat]);
+  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/?layerIDs=1002,2501&visibility=true,true&transparency=0,0&center=' + utm[0] + ',' + utm [1] +'&zoomlevel=' +zoom +'&category=Offene%20Geodaten';
   window.open(mapsUrl,'_blank');
+   }
+  }
 });
 
 var deu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">WebAtlas Deutschland</button>');
