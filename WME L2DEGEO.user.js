@@ -300,7 +300,7 @@ tabContent.appendChild(addon);
 
 $("#sidepanel-l2degeo").append('<b><p style="font-family:verdana"; "font-size:16px">GEOPORTALE DER BUNDESLÄNDER</b></p>');   // ■■■■■ "GEOPORTALE DER BUNDESLÄNDER" ■■■■■
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append('<p style="font-size:75%">Portale mit grüner Schrift unterstützen die Übergabe der Positionsdaten aus dem WME</p>');
+$("#sidepanel-l2degeo").append('<p style="font-size:75%">Portale mit grüner Schrift unterstützen die Übergabe der Koordinaten aus dem WME</p>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/baden-wuertemberg.png" width="16"><b>&nbsp;&nbsp;BADEN-WÜRTEMBERG</b>');
 $("#sidepanel-l2degeo").append(spacer);
