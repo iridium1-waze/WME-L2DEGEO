@@ -278,7 +278,7 @@ deu_btn.click(function(){
   var lon = parseFloat(getQueryString(href, 'lon'));
   var lat = parseFloat(getQueryString(href, 'lat'));
   var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
-  zoom = zoom -13;
+  zoom = zoom -6;
 
   // Using Proj4js to transform coordinates. See http://proj4js.org/
   var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
