@@ -132,11 +132,31 @@ bre_btn.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var ham_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Hamburg</button>');
+var ham_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Hamburg</button>');
 ham_btn.click(function(){
+var href = $('.WazeControlPermalink a').attr('href');
 
-  var mapsUrl = 'https://geoportal-hamburg.de/geo-online' ;
+  var lon = parseFloat(getQueryString(href, 'lon'));
+  var lat = parseFloat(getQueryString(href, 'lat'));
+  var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
+
+  zoom = zoom-12;
+
+  // Using Proj4js to transform coordinates. See http://proj4js.org/
+  var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
+  script.type = 'text/javascript';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js';
+  document.getElementsByTagName('head')[0].appendChild(script); // Add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+  script.onload = popAtlas; //wait till the script is downloaded & executed
+  function popAtlas() {
+  //just a wrapper for onload
+   if (proj4) {
+    firstProj= "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
+    var utm = proj4(firstProj,[lon,lat]);
+  var mapsUrl = 'https://geoportal-hamburg.de/geo-online/?layerIDs=12883,12884,16101,453&visibility=true,true,true,true&transparency=0,0,0,0&center=' + utm[0] +',' + utm [1] +'&zoomlevel=' +zoom ;
   window.open(mapsUrl,'_blank');
+   }
+  }
 });
 
 var hes_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Hessen</button>');
@@ -231,7 +251,7 @@ deu_btn.click(function(){
   var lon = parseFloat(getQueryString(href, 'lon'));
   var lat = parseFloat(getQueryString(href, 'lat'));
   var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
-  zoom = zoom -6.5;
+  zoom = zoom -13;
 
   // Using Proj4js to transform coordinates. See http://proj4js.org/
   var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
@@ -323,7 +343,7 @@ $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(nrw_btn1);			//Nordrhein-Westfalen - gesamt
 $("#sidepanel-l2degeo").append(nrw_btn2);			//Nordrhein-Westfalen - Rhein-Kreis-Neuss
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/rheinland-pfalz.png" width="16"><b>&nbsp;&nbsp;RHEINLAND-PFLAZ</b>');
+$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/rheinland-pfalz.png" width="16"><b>&nbsp;&nbsp;RHEINLAND-PFALZ</b>');
 $("#sidepanel-l2degeo").append(spacer);$("#sidepanel-l2degeo").append(rhe_btn);      //Rheinland-Pfalz
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/saarland.png" width="16"><b>&nbsp;&nbsp;SAARLAND</b>');
