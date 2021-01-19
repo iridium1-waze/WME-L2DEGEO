@@ -194,13 +194,19 @@ nrw_btn1.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var nrw_btn2 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Rhein-Kreis-Neuss Geoportal</button>');
+var nrw_btn2 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">TIM Online</button>');
 nrw_btn2.click(function(){
+
+  var mapsUrl = 'https://www.tim-online.nrw.de/tim-online2' ;
+  window.open(mapsUrl,'_blank');
+});
+
+var nrw_btn3 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Rhein-Kreis-Neuss Geoportal</button>');
+nrw_btn3.click(function(){
 
   var mapsUrl = 'https://maps.rhein-kreis-neuss.de/rknportale/geoportal' ;
   window.open(mapsUrl,'_blank');
 });
-
 
 var rhe_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Rheinland-Pfalz</button>');
 rhe_btn.click(function(){
@@ -348,7 +354,7 @@ $("#sidepanel-l2degeo").append(ham_btn);      //Hamburg
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/hessen.png" width="16"><b>&nbsp;&nbsp;HESSEN</b>');
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append(hes_btn);			//Hessen
+$("#sidepanel-l2degeo").append(hes_btn);		//Hessen
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/mecklenburg-vorpommern.png" width="16"><b>&nbsp;&nbsp;MECKLENBURG-VORPOMMERN</b>');
 $("#sidepanel-l2degeo").append(spacer);
@@ -361,7 +367,8 @@ $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/nordrhein-westfalen.png" width="16"><b>&nbsp;&nbsp;NORDRHEIN-WESTFALEN</b>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(nrw_btn1);			//Nordrhein-Westfalen - gesamt
-$("#sidepanel-l2degeo").append(nrw_btn2);			//Nordrhein-Westfalen - Rhein-Kreis-Neuss
+$("#sidepanel-l2degeo").append(nrw_btn2);			//Nordrhein-Westfalen - TIM Online
+$("#sidepanel-l2degeo").append(nrw_btn3);			//Nordrhein-Westfalen - Rhein-Kreis-Neuss
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/rheinland-pfalz.png" width="16"><b>&nbsp;&nbsp;RHEINLAND-PFALZ</b>');
 $("#sidepanel-l2degeo").append(spacer);$("#sidepanel-l2degeo").append(rhe_btn);      //Rheinland-Pfalz
