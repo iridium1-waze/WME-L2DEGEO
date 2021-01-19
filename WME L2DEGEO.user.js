@@ -236,8 +236,8 @@ sho_btn.click(function(){
   var mapsUrl = 'https://danord.gdi-sh.de/viewer/resources/apps/Anonym/index.html?lang=de' ;
   window.open(mapsUrl,'_blank');
 });
-//Syntax: https://thueringenviewer.thueringen.de/thviewer/?layerIDs=1002,2501&visibility=true,true&transparency=0,0&center=645271.0357146686,5641289.55278756&zoomlevel=11&category=Offene%20Geodaten
-var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
+
+var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
 thu_btn.click(function(){
   var href = $('.WazeControlPermalink a').attr('href');
 
@@ -245,7 +245,7 @@ thu_btn.click(function(){
   var lat = parseFloat(getQueryString(href, 'lat'));
   var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
 
-  zoom = zoom-12;
+  zoom = zoom-7;
 
   // Using Proj4js to transform coordinates. See http://proj4js.org/
   var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
