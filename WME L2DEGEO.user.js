@@ -306,7 +306,7 @@ $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/irid
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(baw_btn);      //Baden-Würtemberg
 $("#sidepanel-l2degeo").append('<br><br>');
-$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/bayern.png" width="16">&nbsp;&nbsp;BAYERN');
+$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/bayern.png" width="16"><b>&nbsp;&nbsp;BAYERN</b>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(bay_btn);      //Bayern
 $("#sidepanel-l2degeo").append('<br><br>');
