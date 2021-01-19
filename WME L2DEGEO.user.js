@@ -5,8 +5,8 @@
 // @version   2021.01.17.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
-// @grant    none
-// @author   Iridium1
+// @grant	none
+// @author	Iridium1
 // @icon    https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/de-map.png
 // ==/UserScript==
 
