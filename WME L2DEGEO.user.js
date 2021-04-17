@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2021.04.12.01
+// @version   2021.04.14.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -14,10 +14,11 @@
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
 
-var l2degeo_version = "2021.04.12.01";
+var l2degeo_version = "2021.04.14.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
+// 2021.04.14.01: Added Support for Tim-Online opening at current WME Postion (with default zoom of tim-online)
 
 if ('undefined' == typeof __RTLM_PAGE_SCOPE_RUN__) {
  (function page_scope_runner()
@@ -196,11 +197,28 @@ nrw_btn1.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var nrw_btn2 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">TIM Online</button>');
+var nrw_btn2 = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">TIM Online</button>');
 nrw_btn2.click(function(){
+  var href = $('.WazeControlPermalink a').attr('href');
 
-  var mapsUrl = 'https://www.tim-online.nrw.de/tim-online2' ;
+  var lon = parseFloat(getQueryString(href, 'lon'));
+  var lat = parseFloat(getQueryString(href, 'lat'));
+
+  // Using Proj4js to transform coordinates. See http://proj4js.org/
+  var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
+  script.type = 'text/javascript';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js';
+  document.getElementsByTagName('head')[0].appendChild(script); // Add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+  script.onload = popAtlas; //wait till the script is downloaded & executed
+  function popAtlas() {
+  //just a wrapper for onload
+   if (proj4) {
+    firstProj= "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
+    var utm = proj4(firstProj,[lon,lat]);
+  var mapsUrl = 'https://www.tim-online.nrw.de/tim-online2/?bg=webatlas&center='+utm[0]+','+utm[1] ;
   window.open(mapsUrl,'_blank');
+   }
+  }
 });
 
 var nrw_btn3 = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Rhein-Kreis-Neuss Geoportal</button>');
