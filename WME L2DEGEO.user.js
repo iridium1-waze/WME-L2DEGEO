@@ -382,7 +382,7 @@ $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/irid
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
 
-var l2degeo_version = "2021.04.20.01";
+var l2degeo_version = "2021.11.19.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
