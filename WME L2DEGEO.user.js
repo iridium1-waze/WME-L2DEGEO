@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2021.04.20.01
+// @version   2021.11.19.01
 
 // @version   2021.11.19.01
 // @include   https://*.waze.com/editor*
