@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2021.11.19.01
+// @version   2021.12.29.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,13 +12,14 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2021.11.19.01";
+var l2degeo_version = "2021.12.29.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
 // 2021.04.14.01: Added Support for Tim-Online opening at current WME Postion (with default zoom of tim-online) Thanks to abusimber! (Peter)
 // 2021.04.20.01: Fixed issues with script loading in Firefox
 // 2021.11.20.01: Added Geoportal Schleswig Holsten (Thanks to DieCookieEnte - Jan!)
+// 2021.12.29.01: Changed Link for Bremen (Thanks to hiwi234!)
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -127,7 +128,7 @@ bra_btn.click(function(){
 var bre_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Bremen</button>');
 bre_btn.click(function(){
 
-  var mapsUrl = 'https://geobasis.bremen.de/ASWeb/ASC_URM/portallogin.jsp' ;
+  var mapsUrl = 'https://geobasis.bremen.de/ASWeb/ASC_URL/GISConnectorRIA.do?PROJECT=FHB_Anwendungsgruppe&APPNAME=LKDirektvertrieb&USER=Gast&PWD=Ab123' ;
   window.open(mapsUrl,'_blank');
 });
 
