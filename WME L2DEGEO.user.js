@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2021.12.29.01
+// @version   2022.04.22.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,7 +12,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2021.12.29.01";
+var l2degeo_version = "2022.04.22.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -20,6 +20,7 @@ var l2degeo_version = "2021.12.29.01";
 // 2021.04.20.01: Fixed issues with script loading in Firefox
 // 2021.11.20.01: Added Geoportal Schleswig Holsten (Thanks to DieCookieEnte - Jan!)
 // 2021.12.29.01: Changed Link for Bremen (Thanks to hiwi234!)
+// 2022.04.22.01: Added Katasterkarte Niedersachsen (Thanks to Benjamin Bruns!)
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -174,8 +175,8 @@ mev_btn.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var nie_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Niedersachsen</button>');
-nie_btn.click(function(){
+var nie_btn1 = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Niedersachsen</button>');
+nie_btn1.click(function(){
     var href = $('.WazeControlPermalink a').attr('href');
 
     var lon = getQueryString(href, 'lon');
@@ -184,6 +185,34 @@ nie_btn.click(function(){
 
     zoom = zoom > 19 ? 19 : zoom;
     var mapsUrl = 'https://www.geobasis.niedersachsen.de/?x=' + lon + '&y=' + lat + '&z=' + (zoom-1);
+    window.open(mapsUrl,'_blank');
+
+});
+
+var nie_btn2 = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Katasterkarte Niedersachsen</button>');
+nie_btn2.click(function(){
+    var href = $('.WazeControlPermalink a').attr('href');
+
+    var lon = getQueryString(href, 'lon');
+    var lat = getQueryString(href, 'lat');
+    var zoomNie2 = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
+
+    var hrefMap = {
+        19: 2000,
+        18: 5000,
+        17: 7500,
+        16: 15000,
+        15: 50000,
+        14: 75000,
+        13: 100000,
+        12: 250000,
+        11: 500000,
+        10: 1250000,
+        9: 3000000
+    };
+zoomNie2 = hrefMap[zoomNie2];
+
+    var mapsUrl = 'https://maps.lgln.niedersachsen.de/katasterkarten-online/mapbender/application/katasterkarten-online?#'+zoomNie2+'@'+lon+'/'+lat+'r0@EPSG:25832';
     window.open(mapsUrl,'_blank');
 
 });
@@ -403,7 +432,8 @@ $("#sidepanel-l2degeo").append(mev_btn); //Mecklenburg-Vorpommern
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/niedersachsen.png" width="16"><b>&nbsp;&nbsp;NIEDERSACHSEN</b>');
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append(nie_btn); //Niedersachsen
+$("#sidepanel-l2degeo").append(nie_btn1); //Geobasis Niedersachsen
+$("#sidepanel-l2degeo").append(nie_btn2); //Niedersachsen Katasterkarte
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/nordrhein-westfalen.png" width="16"><b>&nbsp;&nbsp;NORDRHEIN-WESTFALEN</b>');
 $("#sidepanel-l2degeo").append(spacer);
