@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2022.04.22.01
+// @version   2022.10.02.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,15 +12,16 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2022.04.22.01";
+var l2degeo_version = "2022.10.02.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
 // 2021.04.14.01: Added Support for Tim-Online opening at current WME Postion (with default zoom of tim-online) Thanks to abusimber! (Peter)
 // 2021.04.20.01: Fixed issues with script loading in Firefox
-// 2021.11.20.01: Added Geoportal Schleswig Holsten (Thanks to DieCookieEnte - Jan!)
+// 2021.11.20.01: Added Geoportal Schleswig Holstein (Thanks to DieCookieEnte - Jan!)
 // 2021.12.29.01: Changed Link for Bremen (Thanks to hiwi234!)
 // 2022.04.22.01: Added Katasterkarte Niedersachsen (Thanks to Benjamin Bruns!)
+// 2022.10.02.01: Fixed Link for GeoPortal Hamburg (Thanks to s.jay.m!)
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -155,7 +156,7 @@ var href = $('.WazeControlPermalink a').attr('href');
        var firstProj ='';
          firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
        var utm = proj4(firstProj,[lon,lat]);
-  var mapsUrl = 'https://geoportal-hamburg.de/geo-online/?layerIDs=12883,12884,16101,453&visibility=true,true,true,true&transparency=0,0,0,0&center=' + utm[0] +',' + utm [1] +'&zoomlevel=' +zoom ;
+  var mapsUrl = 'https://geoportal-hamburg.de/geo-online/?Map/layerIds=12883,12884,16101,19969&visibility=true,true,true,true&transparency=0,0,0,0&Map/center=[' + utm[0] +',' + utm [1] + ']&Map/zoomLevel=' +zoom ;
   window.open(mapsUrl,'_blank');
    }
   }
