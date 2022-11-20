@@ -317,8 +317,6 @@ thu_btn.click(function(){
 
   var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/';
   window.open(mapsUrl,'_blank');
-   }
-  }
 });
 
 var deu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">WebAtlas Deutschland</button>');
