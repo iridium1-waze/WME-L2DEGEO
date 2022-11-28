@@ -313,11 +313,33 @@ function popAtlas() {
 }
 });
 
-var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
+var thu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Thüringen</button>');
 thu_btn.click(function(){
+  
+  var href = $('.WazeControlPermalink a').attr('href');
 
-  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/';
+  var lon = parseFloat(getQueryString(href, 'lon'));
+  var lat = parseFloat(getQueryString(href, 'lat'));
+  var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
+
+  zoom = zoom-9;
+
+  // Using Proj4js to transform coordinates. See http://proj4js.org/
+  var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
+  script.type = 'text/javascript';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js';
+  document.getElementsByTagName('head')[0].appendChild(script); // Add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+  script.onload = popAtlas; //wait till the script is downloaded & executed
+  function popAtlas() {
+   //just a wrapper for onload
+     if (proj4) {
+       var firstProj ='';
+         firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
+           var utm = proj4(firstProj,[lon,lat]);
+  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/?center=' + utm[0] + ',' + utm [1] +'&zoomlevel=' +zoom;
   window.open(mapsUrl,'_blank');
+   }
+  }
 
 });
 
