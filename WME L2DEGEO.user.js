@@ -324,8 +324,7 @@ thu_btn.click(function(){
   var lat = parseFloat(getQueryString(href, 'lat'));
   var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
 
-  var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/';
-  zoom = zoom-9;ac
+  zoom = zoom-9;
 
   // Using Proj4js to transform coordinates. See http://proj4js.org/
   var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
@@ -339,6 +338,7 @@ thu_btn.click(function(){
        var firstProj ='';
          firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
            var utm = proj4(firstProj,[lon,lat]);
+  
   var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/?center=' + utm[0] + ',' + utm [1] +'&zoomlevel=' +zoom;
   window.open(mapsUrl,'_blank');
    }
