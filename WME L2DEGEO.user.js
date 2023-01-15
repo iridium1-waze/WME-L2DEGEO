@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2022.11.30.01
+// @version   2023.01.15.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,7 +12,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2022.11.30.01";
+var l2degeo_version = "2023.01.15.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -25,6 +25,7 @@ var l2degeo_version = "2022.11.30.01";
 // 2022.10.02.02: Changed Zoomlevel for GeoPortal Hamburg
 // 2022.11.20.01: Removed handing over of coordinates to Portal Thüringen as no longer supported (Thanks for the hint FasterinoSpeederino!)
 // 2022.11.20.01: Re-Added Thüringen Portal - Hint from LostEmber (Thanks for your contribution!) of how to (still) hand over coordinates.
+// 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -57,6 +58,14 @@ function getQueryString (link, name)
   var len = link.substr(pos).indexOf('&');
   if (-1 == len) len = link.substr(pos).length;
   return link.substr(pos,len);
+}
+function BasemapZoom(met, lat) {
+    // https://docs.mapbox.com/help/glossary/zoom-level/#zoom-levels-and-geographical-distance
+    // 78271.484 meters/pixel basis
+    // met = meter per pixel in destination
+    // lat = latitude of destination
+    // returns Basemap zoom factor
+    return Math.log2( 78271.484 / met * Math.cos( lat / 180 * Math.PI ) )
 }
 
 function CorrectZoom (link)
@@ -346,35 +355,21 @@ thu_btn.click(function(){
 
 });
 
-
-var deu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">WebAtlas Deutschland</button>');
+var deu_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: Green;border-radius: 5px;border: 0.5px solid lightgrey; background: white">basemap.de Deutschland</button>');
 deu_btn.click(function(){
-  var href = $('.WazeControlPermalink a').attr('href');
+   var href = $('.WazeControlPermalink a').attr('href');
 
-  var lon = parseFloat(getQueryString(href, 'lon'));
-  var lat = parseFloat(getQueryString(href, 'lat'));
-  var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
-  zoom = zoom -6;
+   var scale = $(".olControlScaleLineTop");
+   var scaleText = scale.text();
+   var scaleWidth = scale.width();
+   var meter = parseInt(scaleText) * (scaleText.includes("k")?1000:1) / parseInt(scaleWidth);
 
-  // Using Proj4js to transform coordinates. See http://proj4js.org/
-  var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
-  script.type = 'text/javascript';
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js';
-  document.getElementsByTagName('head')[0].appendChild(script); // Add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-  script.onload = popAtlas; //wait till the script is downloaded & executed
-  function popAtlas() {
-   //just a wrapper for onload
-     if (proj4) {
-       var firstProj ='';
-         firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
-           var utm = proj4(firstProj,[lon,lat]);
-    var mapsUrl = 'https://sg.geodatenzentrum.de/web_bkg_webmap/applications/webatlasde/webatlasde.html?zoom=' + zoom + '&lon=' + utm[0] + '&lat=' + utm[1] + '&layers=B0T';
-    window.open(mapsUrl,'_blank');
-   }
-  }
+   var lon = getQueryString(href, 'lon');
+   var lat = getQueryString(href, 'lat');
+   var zoom = BasemapZoom(meter, lat);
 
+   window.open("https://basemap.de/viewer?config=" + btoa('{"lat":' + lat + ',"lon":' + lon + ',"zoom":' + zoom + ',"styleID":0,"pitch":0,"bearing":0,"saturation":0,"brightness":0,"hiddenControls":[],"hiddenLayers":[],"changedLayers":[],"hiddenSubGroups":[],"changedSubGroups":[],"externalStyleURL":""}'), "basemap");
 });
-
 
 var txt_btn1 = $('<button style="width: 285px;height: 24px; ; border: 1px solid silver; font-size:85%; font-weight: bold; color: DarkSlateGrey; background-color: ghostwhite; border-radius: 5px;border: 0.5px solid lightgrey; background: white;">GEOPORTALE BUNDESLÄNDER</button>');
 var txt_btn2 = $('<button style="width: 285px;height: 24px; ; border: 1px solid silver; font-size:85%; font-weight: bold; color: DarkSlateGrey; background-color: ghostwhite; border-radius: 5px;border: 0.5px solid lightgrey; background: white">WEBATLAS DEUTSCHLAND</button>');
@@ -477,7 +472,7 @@ $("#sidepanel-l2degeo").append('<b><p style="font-family:verdana"; "font-size:16
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/deutschland.png" width="16"><b>&nbsp;&nbsp;Webatlas DE</b>');
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append(deu_btn); //Webatlas
+$("#sidepanel-l2degeo").append(deu_btn); //basemap.de
 
 }
 add_buttons();
