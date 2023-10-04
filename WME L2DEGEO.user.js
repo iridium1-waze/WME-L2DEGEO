@@ -403,7 +403,7 @@ $("#sidepanel-l2degeo").append('<b><p style="font-family:verdana"; "font-size:16
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append('<p style="font-size:75%">Portale mit grüner Schrift unterstützen die Übergabe der Koordinaten aus dem WME</p>');
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/baden-wuerttemberg.png" width="16"><b>&nbsp;&nbsp;BADEN-WÜRTEMBERG</b>');
+$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/baden-wuerttemberg.png" width="16"><b>&nbsp;&nbsp;BADEN-WÜRTTEMBERG</b>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(baw_btn); //Baden-Würtemberg
 $("#sidepanel-l2degeo").append('<br><br>');
