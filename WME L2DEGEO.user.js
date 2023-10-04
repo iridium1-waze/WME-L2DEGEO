@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2023.01.15.01
+// @version   2023.10.04.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,7 +12,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2023.01.15.01";
+var l2degeo_version = "2023.10.04.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -26,6 +26,7 @@ var l2degeo_version = "2023.01.15.01";
 // 2022.11.20.01: Removed handing over of coordinates to Portal Thüringen as no longer supported (Thanks for the hint FasterinoSpeederino!)
 // 2022.11.20.01: Re-Added Thüringen Portal - Hint from LostEmber (Thanks for your contribution!) of how to (still) hand over coordinates.
 // 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
+// 2023.10.04.01: Fixed typo in state Baden-Württemberg
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -90,7 +91,7 @@ function add_buttons()
     }
   }
 
-var baw_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Baden-Würtemberg</button>');
+var baw_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Baden-Württemberg</button>');
 baw_btn.click(function(){
 
   var mapsUrl = 'https://www.geoportal-bw.de' ;
@@ -402,7 +403,7 @@ $("#sidepanel-l2degeo").append('<b><p style="font-family:verdana"; "font-size:16
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append('<p style="font-size:75%">Portale mit grüner Schrift unterstützen die Übergabe der Koordinaten aus dem WME</p>');
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/baden-wuertemberg.png" width="16"><b>&nbsp;&nbsp;BADEN-WÜRTEMBERG</b>');
+$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/baden-wuerttemberg.png" width="16"><b>&nbsp;&nbsp;BADEN-WÜRTEMBERG</b>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(baw_btn); //Baden-Würtemberg
 $("#sidepanel-l2degeo").append('<br><br>');
@@ -470,7 +471,7 @@ $("#sidepanel-l2degeo").append(thu_btn); //Thüringen
 $("#sidepanel-l2degeo").append('<br><br>');
 $("#sidepanel-l2degeo").append('<b><p style="font-family:verdana"; "font-size:16px">GEOPORTAL DEUTSCHLAND</b></p>'); // ■■■■■ "GEOPORTAL DE" ■■■■■
 $("#sidepanel-l2degeo").append(spacer);
-$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/deutschland.png" width="16"><b>&nbsp;&nbsp;Webatlas DE</b>');
+$("#sidepanel-l2degeo").append('<img src="https://raw.githubusercontent.com/iridium1-waze/WME-L2DEGEO/main/deutschland.png" width="16"><b>&nbsp;&nbsp;basemap.de</b>');
 $("#sidepanel-l2degeo").append(spacer);
 $("#sidepanel-l2degeo").append(deu_btn); //basemap.de
 
