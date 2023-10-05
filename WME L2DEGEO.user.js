@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2023.10.04.01
+// @version   2023.10.05.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,7 +12,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2023.10.04.01";
+var l2degeo_version = "2023.10.05.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -27,6 +27,7 @@ var l2degeo_version = "2023.10.04.01";
 // 2022.11.20.01: Re-Added Thüringen Portal - Hint from LostEmber (Thanks for your contribution!) of how to (still) hand over coordinates.
 // 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
 // 2023.10.04.01: Fixed typo in state Baden-Württemberg
+// 2023.10.05.01: Fixed defect link to Geportal Sachsen-Anhalt after they changed to basemap
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -293,7 +294,7 @@ sac_btn.click(function(){
 var san_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Sachsen-Anhalt-Viewer</button>');
 san_btn.click(function(){
 
-  var mapsUrl = 'https://www.lvermgeo.sachsen-anhalt.de/de/startseite_viewer.html' ;
+  var mapsUrl = 'https://www.geodatenportal.sachsen-anhalt.de/mapapps/resources/apps/viewer_v40/index.html?lang=de' ;
   window.open(mapsUrl,'_blank');
 });
 
