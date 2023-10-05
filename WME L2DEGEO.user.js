@@ -27,7 +27,7 @@ var l2degeo_version = "2023.10.05.01";
 // 2022.11.20.01: Re-Added Thüringen Portal - Hint from LostEmber (Thanks for your contribution!) of how to (still) hand over coordinates.
 // 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
 // 2023.10.04.01: Fixed typo in state Baden-Württemberg
-// 2023.10.05.01: Fixed broken link to Geportal Sachsen-Anhalt after they changed to basemap
+// 2023.10.05.01: Fixed broken link to Geportal Sachsen-Anhalt after they changed to basemap - Thanks to pox_online!
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
