@@ -27,7 +27,7 @@ var l2degeo_version = "2023.10.05.01";
 // 2022.11.20.01: Re-Added Thüringen Portal - Hint from LostEmber (Thanks for your contribution!) of how to (still) hand over coordinates.
 // 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
 // 2023.10.04.01: Fixed typo in state Baden-Württemberg
-// 2023.10.05.01: Fixed defect link to Geportal Sachsen-Anhalt after they changed to basemap
+// 2023.10.05.01: Fixed broken link to Geportal Sachsen-Anhalt after they changed to basemap
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -287,14 +287,14 @@ saa_btn.click(function(){
 var sac_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Sachsen</button>');
 sac_btn.click(function(){
 
-  var mapsUrl = 'https://geoportal.sachsen.de/cps/karte.html?showmap=true'
+  var mapsUrl = 'https://geoportal.sachsen.de/cps/karte.html?showmap=true';
   window.open(mapsUrl,'_blank');
 });
 
 var san_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Sachsen-Anhalt-Viewer</button>');
 san_btn.click(function(){
 
-  var mapsUrl = 'https://www.geodatenportal.sachsen-anhalt.de/mapapps/resources/apps/viewer_v40/index.html?lang=de' ;
+  var mapsUrl = 'https://www.geodatenportal.sachsen-anhalt.de/mapapps/resources/apps/viewer_v40/index.html?lang=de';
   window.open(mapsUrl,'_blank');
 });
 
