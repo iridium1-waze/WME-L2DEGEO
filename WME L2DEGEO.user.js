@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2023.10.05.01
+// @version   2024.02.27.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @grant	none
@@ -12,7 +12,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2023.10.05.01";
+var l2degeo_version = "2024.02.27.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -28,6 +28,7 @@ var l2degeo_version = "2023.10.05.01";
 // 2023.01.15.01: Replaced Webatlas (depreciated) with basemap.de
 // 2023.10.04.01: Fixed typo in state Baden-Württemberg
 // 2023.10.05.01: Fixed broken link to Geportal Sachsen-Anhalt after they changed to basemap - Thanks to pox_online!
+// 2024.02.27.01: Fixed broken link to Geobasis Bremen
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -141,10 +142,10 @@ bra_btn.click(function(){
   window.open(mapsUrl,'_blank');
 });
 
-var bre_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geobasis Bremen</button>');
+var bre_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Bremen</button>');
 bre_btn.click(function(){
 
-  var mapsUrl = 'https://geobasis.bremen.de/ASWeb/ASC_URL/GISConnectorRIA.do?PROJECT=FHB_Anwendungsgruppe&APPNAME=LKDirektvertrieb&USER=Gast&PWD=Ab123' ;
+  var mapsUrl = 'https://geoportal.bremen.de/geoportal' ;
   window.open(mapsUrl,'_blank');
 });
 
