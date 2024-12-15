@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2024.10.08.01
+// @version   2024.12.15.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @license   MIT
@@ -15,7 +15,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2024.10.08.01";
+var l2degeo_version = "2024.12.15.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -32,7 +32,8 @@ var l2degeo_version = "2024.10.08.01";
 // 2023.10.04.01: Fixed typo in state Baden-Württemberg
 // 2023.10.05.01: Fixed broken link to Geportal Sachsen-Anhalt after they changed to basemap - Thanks to pox_online!
 // 2024.02.27.01: Fixed broken link to Geobasis Bremen
-// 2024.10.08.01: Added webhook for Greasy Fork - thankd to Dancingman81!
+// 2024.10.08.01: Added webhook for Greasy Fork - thanks to Dancingman81!
+// 2024.12.15.01: Updated link Geoportal Bayern
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -112,7 +113,7 @@ bay_btn.click(function(){
   var lat = parseFloat(getQueryString(href, 'lat'));
   var zoom = parseInt(getQueryString(href, 'zoom')) + CorrectZoom(href);
 
-  zoom = zoom-6;
+  zoom = zoom-1.5;
 
   // Using Proj4js to transform coordinates. See http://proj4js.org/
   var script = document.createElement("script"); // dynamic load the library from https://cdnjs.com/libraries/proj4js
@@ -126,7 +127,7 @@ bay_btn.click(function(){
        var firstProj ='';
          firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
        var utm = proj4(firstProj,[lon,lat]);
-  var mapsUrl = 'https://geoportal.bayern.de/bayernatlas/index.html?zoom=' + zoom + '&lang=de&topic=ba&bgLayer=atkis&catalogNodes=11,222&E=' + utm[0] +'&N=' + utm[1] ;
+  var mapsUrl = 'https://atlas.bayern.de/?c=' + utm[0] + ',' + utm[1] + '&z=' + zoom + '&r=0&l=atkis&t=ba';
   window.open(mapsUrl,'_blank');
    }
   }
@@ -354,7 +355,7 @@ thu_btn.click(function(){
        var firstProj ='';
          firstProj = "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
            var utm = proj4(firstProj,[lon,lat]);
-  
+
   var mapsUrl = 'https://thueringenviewer.thueringen.de/thviewer/?center=' + utm[0] + ',' + utm [1] +'&zoomlevel=' +zoom;
   window.open(mapsUrl,'_blank');
    }
