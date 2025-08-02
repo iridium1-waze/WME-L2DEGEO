@@ -2,7 +2,7 @@
 // @name    WME Link to German States Geo Portals
 // @description This script create buttons to open Geo portals of German states, using the WME paramenters where supported.
 // @namespace  https://github.com/iridium1-waze/WME-L2DEGEO/blob/main/WME%20L2DEGEO.user.js
-// @version   2024.12.15.01
+// @version   2025.08.02.01
 // @include   https://*.waze.com/editor*
 // @include   https://*.waze.com/*/editor*
 // @license   MIT
@@ -15,7 +15,7 @@
 // Mini howto:
 // 1) install this script as GitHub script
 // 2) Click on any of the links includes to open the state GEO portal, PL Data will be handed over where supported.
-var l2degeo_version = "2024.12.15.01";
+var l2degeo_version = "2025.08.02.01";
 // by Iridium1 (contact either PM or iridium1.waze@gmail.com)
 // 2021.01.17.01: Initial release
 // 2021.04.12.01: Changed URL for Brandenburg Viewer
@@ -34,6 +34,7 @@ var l2degeo_version = "2024.12.15.01";
 // 2024.02.27.01: Fixed broken link to Geobasis Bremen
 // 2024.10.08.01: Added webhook for Greasy Fork - thanks to Dancingman81!
 // 2024.12.15.01: Updated link Geoportal Bayern
+// 2025.08.02.01: Updated link to Geoportal Sachsen to the new one
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
@@ -293,7 +294,7 @@ saa_btn.click(function(){
 var sac_btn = $('<button style="width: 285px;height: 24px; font-size:85%;color: DarkSlateGrey;border-radius: 5px;border: 0.5px solid lightgrey; background: white">Geoportal Sachsen</button>');
 sac_btn.click(function(){
 
-  var mapsUrl = 'https://geoportal.sachsen.de/cps/karte.html?showmap=true';
+  var mapsUrl = 'https://geoportal.sachsen.de/mapviewer/resources/apps/sachsenatlas/index.html';
   window.open(mapsUrl,'_blank');
 });
 
