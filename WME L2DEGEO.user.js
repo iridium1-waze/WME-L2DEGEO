@@ -34,7 +34,7 @@ var l2degeo_version = "2025.08.02.01";
 // 2024.02.27.01: Fixed broken link to Geobasis Bremen
 // 2024.10.08.01: Added webhook for Greasy Fork - thanks to Dancingman81!
 // 2024.12.15.01: Updated link Geoportal Bayern
-// 2025.08.02.01: Updated link to Geoportal Sachsen to the new one
+// 2025.08.02.01: Updated link to Geoportal Sachsen to the new one - thanks to PoxOnline!
 
 /* eslint-env jquery */ //we are working with jQuery
 //indicate used variables to be assigned
